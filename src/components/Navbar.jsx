@@ -20,6 +20,8 @@ const Nav = styled.nav`
   }
 `;
 
+const pages = ["products", "pricing", "blog"];
+
 function Navbar() {
   return (
     <Container>
