@@ -3,6 +3,7 @@ import { useRecoilValue } from "recoil";
 import { productsState } from "../stores/products/atom";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useAccessDenied } from "../hooks/useAccessDenied";
 
 const ProductWrapper = styled.div`
   display: flex;
@@ -25,6 +26,7 @@ const Product = styled(Link)`
 `;
 
 function Products() {
+  useAccessDenied();
   const products = useRecoilValue(productsState);
 
   return (

@@ -3,12 +3,15 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { cartState } from "../stores/cart/atom";
 import { productsState } from "../stores/products/atom";
 import styled from "styled-components";
+import { useAccessDenied } from "../hooks/useAccessDenied";
 
 const CartItem = styled.div`
   display: flex;
 `;
 
 function Cart() {
+  useAccessDenied();
+  
   const products = useRecoilValue(productsState);
   const [cart, setCart] = useRecoilState(cartState);
 

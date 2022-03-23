@@ -4,6 +4,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { productsState } from "../stores/products/atom";
 import styled from "styled-components";
 import { cartState } from "../stores/cart/atom";
+import { useAccessDenied } from "../hooks/useAccessDenied";
 
 const Container = styled.div`
   display: flex;
@@ -14,6 +15,7 @@ const Container = styled.div`
 `;
 
 function SingleProduct() {
+  useAccessDenied();
   const params = useParams(); // /products/1
   const products = useRecoilValue(productsState);
   const product = products.find((p) => p.id === parseInt(params.productId));
