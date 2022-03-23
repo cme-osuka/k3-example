@@ -1,5 +1,6 @@
 import React, { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
+import MyErrorBoundary from "./components/MyErrorBoundary";
 // Utan Codesplitting
 import Navbar from "./components/Navbar";
 /*import Cart from "./pages/Cart";
@@ -20,15 +21,17 @@ const SingleProduct = React.lazy(() => import("./pages/SingleProduct"));
 
 function App() {
   return (
-    <Suspense fallback={<div>Loading..</div>}>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/products/:productId" element={<SingleProduct />} />
-        <Route path="/cart" element={<Cart />} />
-      </Routes>
-    </Suspense>
+    <MyErrorBoundary>
+      <Suspense fallback={<div>Loading..</div>}>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/products/:productId" element={<SingleProduct />} />
+          <Route path="/cart" element={<Cart />} />
+        </Routes>
+      </Suspense>
+    </MyErrorBoundary>
   );
 }
 
