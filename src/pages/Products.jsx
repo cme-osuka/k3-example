@@ -25,7 +25,7 @@ const Product = styled(Link)`
 `;
 
 function Products() {
-  const products = useRecoilValue(productsStatex);
+  const products = useRecoilValue(productsState);
 
   return (
     <ProductWrapper>
