@@ -30,6 +30,7 @@ function Navbar() {
         <Link to="/">Home</Link>
         <Link to="/products">Produkter</Link>
         <Link to="/cart">Cart</Link>
+        <Link to="/login">Login</Link>
       </Nav>
     </Container>
   );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { productsState } from "../stores/products/atom";
@@ -18,6 +18,12 @@ function SingleProduct() {
   const products = useRecoilValue(productsState);
   const product = products.find((p) => p.id === parseInt(params.productId));
   const [cart, setCart] = useRecoilState(cartState);
+
+  useEffect(() => {
+    fetch(`https://fakestoreapi.com/products/${params.productId}`)
+      .then((res) => res.json())
+      .then((json) => console.log(json));
+  }, []);
 
   function handleAddToCart() {
     const newCartItem = {
